@@ -1,0 +1,86 @@
+{
+    "services": {
+        "clnServ": {
+            "name": "cleaning",
+            "description": "Servicio de limpieza Alto de la gloria edificio 11",
+            "shortLabel": "Limpieza",
+            "responsible": "CESAR PADILLA",
+            "moneySource": "EFECTIVO",
+            "usualAmount": 200.0,
+            "enum": 4
+        },
+        "grdServ": {
+            "name": "gardening",
+            "description": "Servicio de Jardiner\u00eda Alto de la gloria edificio 11",
+            "shortLabel": "Jardiner\u00eda",
+            "responsible": "LEONARDO MENDOZA",
+            "moneySource": "YAPE",
+            "enum": 3
+        },
+        "elvServ": {
+            "name": "elevator",
+            "description": "Servicio de Mantenimiento Ascensor Alto de la gloria edificio 11",
+            "shortLabel": "Mantenimiento Ascensor",
+            "responsible": "Ascensor SA",
+            "moneySource": "BCP",
+            "usualAmount": 295.0,
+            "enum": 1
+        },
+        "elcUtils": {
+            "name": "electricity",
+            "description": "Seal",
+            "shortLabel": "Seal",
+            "responsible": "Seal",
+            "moneySource": "BCP",
+            "usualAmount": 290.0,
+            "enum": 1
+        }
+    },
+    "apartments": [
+        {
+            "id": "101",
+            "name": "Familia Torres",
+            "percentage": 12.05
+        },
+        {
+            "id": "201",
+            "name": "Familia Galdos",
+            "percentage": 10.66
+        },
+        {
+            "id": "202",
+            "name": "Familia Sard\u00e1",
+            "percentage": 12.05
+        },
+        {
+            "id": "301",
+            "name": "Familia Ojeda",
+            "percentage": 11.46
+        },
+        {
+            "id": "302",
+            "name": "Familia \u00c1valos Lozada",
+            "percentage": 12.68
+        },
+        {
+            "id": "401",
+            "name": "Familia Mota",
+            "percentage": 11.46
+        },
+        {
+            "id": "402",
+            "name": "Familia Rodriguez Cabieses",
+            "percentage": 12.68
+        },
+        {
+            "id": "501",
+            "name": "Familia Howard Mella",
+            "percentage": 16.96
+        }
+    ],
+    "admin": {
+        "shortName": "DAVID R. TORRES P.",
+        "name": "DAVID RODOLFO TORRES PALAO",
+        "id": "70009504"
+    }
+}

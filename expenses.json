@@ -1,0 +1,99 @@
+{
+  "periods": [
+    {
+      "id": "feb2025",
+      "label": "FEBRERO 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 840,
+      "others": [
+        {
+          "concept": "Reparación tarjeta de garage",
+          "total": 190
+        },
+        {
+          "concept": "Mantenimiento motor de garage",
+          "total": 120
+        },
+        {
+          "concept": "Reactivación de cerco eléctrico",
+          "total": 50
+        }
+      ]
+    },
+    {
+      "id": "mar2025",
+      "label": "MARZO 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 840,
+      "others": [
+        {
+          "concept": "Reparación tanque de agua",
+          "total": 440
+        },
+        {
+          "concept": "Rejilla de ventilación asensor",
+          "total": 370
+        }
+      ]
+    },
+     {
+      "id": "apr2025",
+      "label": "ABRIL 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 840,
+      "others": [
+      ]
+    }
+  ]
+}

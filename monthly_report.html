@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reporte de Gastos {{ period_name }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .mainTable { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .mainTable th, .mainTable td { border: 1px solid black; padding: 1px; text-align: left; }
+        .amountCol { text-align: right !important; }
+             .footer {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .mainTable th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+<h2 style="text-align: center;">REPORTE DE GASTOS {{ period_name }}</h2>
+<h3 style="text-align: center;">ALTO DE LA GLORIA 11</h3>
+
+
+<h3>Detalle de Gastos</h3>
+<table style="width: 100%; border-collapse: collapse; border: none;">
+    <tr>
+        <td style="vertical-align: top; width: 48%; padding-right: 10px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <th style="background-color: #f2f2f2; text-align: left;">Gastos Comunes</th>
+                    <th style="background-color: #f2f2f2; text-align: right;">Monto</th>
+                </tr>
+                {% for expense in expenses.commons %}
+                <tr>
+                    <td style="border: none;">{{ expense.concept }}</td>
+                    <td style="border: none; text-align: right;">S/ {{ "{:,.2f}".format(expense.total) }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+        <td style="vertical-align: top; width: 48%; padding-left: 10px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <th style="background-color: #f2f2f2; text-align: left;">Gastos Otros</th>
+                    <th style="background-color: #f2f2f2; text-align: right;">Monto</th>
+                </tr>
+                {% for expense in expenses.others %}
+                <tr>
+                    <td style="border: none;">{{ expense.concept }}</td>
+                    <td style="border: none; text-align: right;">S/ {{ "{:,.2f}".format(expense.total) }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </td>
+    </tr>
+</table>
+<br/>
+<table style="width: 100%; border-collapse: collapse; border: none;">
+    <tr>
+        <td style="vertical-align: top; width: 48%; padding-right: 10px;">
+
+        </td>
+        <td style="vertical-align: top; width: 48%; padding-left: 10px;">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="border: none;"><strong>TOTAL GASTOS</strong></td>
+                    <td style="border: none; text-align: right;"><strong>S/ {{ "{:,.2f}".format(totals.total_expenses)
+                        }}</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: none;"><strong>VIGILANCIA</strong></td>
+                    <td style="border: none; text-align: right;"><strong>S/ {{ "{:,.2f}".format(totals.total_security)
+                        }}</strong></td>
+                </tr>
+                <tr>
+                    <td style="border: none;"><strong>TOTAL DEL MES</strong></td>
+                    <td style="border: none; text-align: right;"><strong>S/ {{ "{:,.2f}".format(totals.total) }}</strong>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+<h3>Distribución</h3>
+<table class="mainTable">
+    <tr>
+        <th>Dpto</th>
+        <th>Propietario</th>
+        <th>Porcentaje</th>
+        <th>Gastos</th>
+        <th>Vigilancia</th>
+        <th>Total</th>
+    </tr>
+    {% for payment in payments %}
+    <tr>
+        <td>{{ payment.id }}</td>
+        <td>{{ payment.name }}</td>
+        <td>{{ payment.percentage }}%</td>
+        <td class="amountCol">S/ {{ "{:,.2f}".format(payment.total_expenses) }}</td>
+        <td class="amountCol">S/ {{ "{:,.2f}".format(payment.total_security) }}</td>
+        <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(payment.total) }}</strong></td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td colspan="2"><b>TOTAL</b></td>
+        <td><strong>100%</strong></td>
+        <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(totals.total_apt_expenses) }}</strong></td>
+        <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(totals.total_apt_security) }}</strong></td>
+        <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(totals.total_apt) }}</strong></td>
+    </tr>
+</table>
+
+<h3>Medios de Pago</h3>
+
+<table>
+    <tr>
+        <td style="vertical-align: top;width: 20%;">
+            <strong>YAPE</strong> <br>965134772
+            <br><br>
+            <img style="width: 100px; height: 100px;" src="{{ imgs.yape_img_url }}"/>
+        </td>
+        <td style="vertical-align: top;width: 20%;">
+            <strong>PLIN</strong> <br>965134772
+            <br><br>
+            <img style="width: 100px; height: 100px;" src="{{ imgs.plin_img_url }}"/>
+        </td>
+
+        <td style="vertical-align: top;width: 30%;">
+            <strong>BCP</strong><br>21505101809039
+            <br>
+            CCI: 00221510510180903921
+        </td>
+
+        <td style="vertical-align: top;width: 30%;">
+            <strong>Interbank</strong><br>3153045020699
+            <br>
+            CCI: 00331501304502069995
+        </td>
+
+
+    </tr>
+</table>
+
+<table style="width: 100%;">
+    <tr>
+        <td style="width: 50%;"></td> <!-- Celda vacía (50%) -->
+        <td style="width: 50%; text-align: right; padding-bottom: 50px;">
+            Arequipa, {{ date }}
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 50%;"></td> <!-- Celda vacía (50%) -->
+        <td style="width: 50%; text-align: center; padding-top: 20px;">
+            <table>
+                <tr>
+                    <!-- Celda con la línea y "Administrador" -->
+                    <td style="text-align: center; padding-right: 20px;">
+                        <span style="display: block; width: 200px; border-top: 1px solid black;"></span>
+                        <strong>Administrador</strong>
+                    </td>
+                    <!-- Celda con la imagen -->
+                    <td>
+                        <img style="width: 50px; height: 50px;" src="data:image/png;base64,{{ imgs.qr_base64 }}" />
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>
