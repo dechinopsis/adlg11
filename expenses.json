@@ -70,7 +70,7 @@
         }
       ]
     },
-     {
+    {
       "id": "apr2025",
       "label": "ABRIL 2025",
       "commons": [
@@ -93,6 +93,10 @@
       ],
       "security": 840,
       "others": [
+        {
+          "concept": "Artículos de limpieza",
+          "total": 29.8
+        }
       ]
     }
   ]
