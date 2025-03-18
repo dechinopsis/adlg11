@@ -19,16 +19,13 @@ def load_metadata():
     with open(META_FILE, "r") as f:
         return json.load(f)
 
-
-if __name__ == "__main__":
+def main(period):
     metadata = load_metadata()
     admin = metadata["admin"]
 
     meta_file = os.path.abspath("meta.json")
     period_file = os.path.abspath("expenses.json")
 
-    #period = choose_period(period_file)
-    period='feb2025'
     result = calculate_payments(meta_file, period_file, period)
 
     for apto in result['payments']:
@@ -67,3 +64,9 @@ if __name__ == "__main__":
         os.makedirs(folder, exist_ok=True)
         pdf_file = f"{folder}/{apto['id']}.pdf"
         HTML(string=html_output).write_pdf(pdf_file)
+
+
+if __name__ == "__main__":
+    # period = choose_period(period_file)
+    period = 'mar2025'
+    main(period)
