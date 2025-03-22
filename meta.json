@@ -7,7 +7,7 @@
             "responsible": "CESAR PADILLA",
             "moneySource": "EFECTIVO",
             "usualAmount": 200.0,
-            "enum": 4
+            "enum": 5
         },
         "grdServ": {
             "name": "gardening",
@@ -39,7 +39,7 @@
     "apartments": [
         {
             "id": "101",
-            "name": "Familia Torres",
+            "name": "Familia Torres Espinoza",
             "percentage": 12.05
         },
         {
