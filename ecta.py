@@ -1,45 +1,7 @@
-import csv
-from datetime import datetime
-
 from jinja2 import Template
 from weasyprint import HTML
 
-
-# Read CSV data from file
-def parse_csv(file_path):
-    with open(file_path, mode='r', encoding='utf-8') as file:
-        reader = csv.DictReader(file)
-        reader.fieldnames = [name.strip().lstrip('\ufeff') for name in reader.fieldnames]
-        return list(reader)
-
-
-def calculate_balance_and_movements(data, period):
-    previous_balance = 0
-    current_balance = 0
-    movements = []
-
-    period = int(period.replace('/', ''))
-
-    for row in data:
-        date = datetime.strptime(row['Date'], '%d/%m/%y')
-        month_year = int(date.strftime('%m%Y'))
-        movement = round(float(row['Credit'] or 0) - float(row['Debit'] or 0), 2)
-
-        if month_year < period:
-            previous_balance = round(previous_balance + movement, 2)
-
-        current_balance = round(current_balance + movement, 2)
-
-        if month_year == period and (round(float(row['Debit'] or 0), 2) != 0 or round(float(row['Credit'] or 0), 2) != 0):
-            movements.append({
-                'Ordinal': row['Ordinal'],
-                'Concept': row['Concept'],
-                'Date': date.strftime('%b%d').upper(),
-                'Debit': float(row['Debit'] or 0),
-                'Credit': float(row['Credit'] or 0)
-            })
-
-    return previous_balance, current_balance, movements
+from commons.commons import parse_csv, calculate_balance_and_movements
 
 
 def format_currency(amount):

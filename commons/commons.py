@@ -1,4 +1,5 @@
 import base64
+import csv
 import json
 from datetime import datetime
 from io import BytesIO
@@ -31,27 +32,6 @@ def amount_to_words(amount):
         words += f" y {num2words(fractional_part, lang='es')} centavos"
 
     return words
-
-
-def choose_period(period_file):
-    with open(period_file, 'r', encoding='utf-8') as f:
-        period_data = json.load(f)
-
-    periods = period_data["periods"]
-    if not periods:
-        raise ValueError("❌ No periods found")
-
-    print("📅 Available periods:")
-    for period in periods:
-        print(f"🌟 {period['id']}: {period['label']}")
-
-    while True:
-        chosen_period = input("📝 Enter the desired period ID (or press Enter for the latest): ").strip()
-        if not chosen_period:
-            return periods[-1]["id"]
-        if any(p["id"] == chosen_period for p in periods):
-            return chosen_period
-        print("⚠️ Invalid period ID. Please try again.")
 
 
 def calculate_payments(meta_file: str, period_file: str, period: str = None):
@@ -142,3 +122,42 @@ def calculate_payments(meta_file: str, period_file: str, period: str = None):
             "total": round(total_security + total_expenses, 2)
         }
     }
+
+
+def parse_csv(file_path):
+    with open(file_path, mode='r', encoding='utf-8') as file:
+        reader = csv.DictReader(file)
+        reader.fieldnames = [name.strip().lstrip('\ufeff') for name in reader.fieldnames]
+        return list(reader)
+
+
+def calculate_balance_and_movements(data, period):
+    previous_balance = 0
+    current_balance = 0
+    movements = []
+
+    period = int(period.replace('/', ''))
+
+    for row in data:
+        date = datetime.strptime(row['Date'], '%d/%m/%y')
+        month_year = int(date.strftime('%m%Y'))
+        movement = round(float(row['Credit'] or 0) - float(row['Debit'] or 0), 2)
+
+        if month_year < period:
+            previous_balance = round(previous_balance + movement, 2)
+
+        current_balance = round(current_balance + movement, 2)
+
+        if month_year == period and (
+                round(float(row['Debit'] or 0), 2) != 0 or round(float(row['Credit'] or 0), 2) != 0):
+            movements.append({
+                'Ordinal': row['Ordinal'],
+                'Concept': row['Concept'],
+                'Reference': row['Reference'],
+                'NfDate': date,
+                'Date': date.strftime('%b%d').upper(),
+                'Debit': float(row['Debit'] or 0),
+                'Credit': float(row['Credit'] or 0)
+            })
+
+    return previous_balance, current_balance, movements

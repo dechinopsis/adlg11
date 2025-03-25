@@ -140,7 +140,6 @@ def main(period):
 </html>
 ''')
 
-    # Renderizar el HTML
     html_content = html_template.render(page_data=page_data, period_formatted=period_formatted)
 
     pperiod = (period_formatted.replace('/', '_'))
