@@ -7,7 +7,7 @@
             "responsible": "CESAR PADILLA",
             "moneySource": "EFECTIVO",
             "usualAmount": 200.0,
-            "enum": 6
+            "enum": 7
         },
         "grdServ": {
             "name": "gardening",
@@ -15,7 +15,7 @@
             "shortLabel": "Jardiner\u00eda",
             "responsible": "LEONARDO MENDOZA",
             "moneySource": "YAPE",
-            "enum": 3
+            "enum": 4
         },
         "elvServ": {
             "name": "elevator",
