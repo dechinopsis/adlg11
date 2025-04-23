@@ -106,6 +106,35 @@
           "total": 415.85
         }
       ]
+    },
+     {
+      "id": "may2025",
+      "label": "MAYO 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 600
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 840,
+      "others": [
+        {
+          "concept": "Cerco eléctrico 2da cuota",
+          "total": 415.85
+        }
+      ]
     }
   ]
 }
