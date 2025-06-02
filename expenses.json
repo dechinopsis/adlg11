@@ -117,6 +117,35 @@
         },
         {
           "concept": "grdServ",
+          "total": 110
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+        {
+          "concept": "Artículos de limpieza",
+          "total": 35.23
+        }
+      ]
+    },
+     {
+      "id": "jun2025",
+      "label": "Junio 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
           "total": 50
         },
         {
@@ -128,11 +157,11 @@
           "total": 290
         }
       ],
-      "security": 840,
+      "security": 1560,
       "others": [
         {
-          "concept": "Cerco eléctrico 2da cuota",
-          "total": 415.85
+          "concept": "Platón LED 2do piso",
+          "total": 81.90
         }
       ]
     }
