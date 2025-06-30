@@ -99,5 +99,5 @@ def main(_period):
 
 
 if __name__ == "__main__":
-    period = 'may2025'
+    period = 'jun2025'
     main(period)

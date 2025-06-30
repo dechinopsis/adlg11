@@ -157,11 +157,164 @@
           "total": 290
         }
       ],
-      "security": 1560,
+      "security": 1040,
       "others": [
         {
           "concept": "Platón LED 2do piso",
           "total": 81.90
+        },
+        {
+          "concept": "Artículos de Limpieza",
+          "total": 25.21
+        },
+         {
+          "concept": "Reles Ascensor cuota 1",
+          "total": 581.88
+        }
+      ],
+       "fixes": {
+         "401": -7.13
+       }
+    },
+     {
+      "id": "jul2025",
+      "label": "Julio 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 2080,
+      "others": [
+         {
+          "concept": "Artículos de Limpieza",
+          "total": 24.70
+        }
+      ]
+    },
+     {
+      "id": "aug2025",
+      "label": "Agosto 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+        {
+          "concept": "Reles Ascensor cuota 2",
+          "total": 0.1
+        }
+      ]
+    },
+     {
+      "id": "sep2025",
+      "label": "Septiembre 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+
+      ]
+    },
+     {
+      "id": "oct2025",
+      "label": "Octubre 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+        {
+          "concept": "Reles Ascensor cuota 3",
+          "total": 0.1
+        }
+      ]
+    },
+     {
+      "id": "nov2025",
+      "label": "Noviembre 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 50
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1560,
+      "others": [
+        {
+          "concept": "Cerco eléctrico 2da cuota",
+          "total": 415.85
         }
       ]
     }

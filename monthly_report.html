@@ -2,6 +2,14 @@
 <html>
 <head>
     <title>Reporte de Gastos {{ period_name }}</title>
+      {% block layout_style %}
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 1cm 1cm 1cm 1cm;
+        }
+    </style>
+    {% endblock %}
     <style>
         body { font-family: Arial, sans-serif; }
         .mainTable { width: 100%; border-collapse: collapse; margin-top: 15px; }
@@ -73,6 +81,10 @@
                         }}</strong></td>
                 </tr>
                 <tr>
+                    <td style="border: none;"><strong>AJUSTES</strong></td>
+                    <td style="border: none; text-align: right;"><strong>S/ {{ "{:,.2f}".format(totals.total_adjustments) }}</strong></td>
+                </tr>
+                <tr>
                     <td style="border: none;"><strong>TOTAL DEL MES</strong></td>
                     <td style="border: none; text-align: right;"><strong>S/ {{ "{:,.2f}".format(totals.total) }}</strong>
                     </td>
@@ -89,6 +101,7 @@
         <th>Porcentaje</th>
         <th>Gastos</th>
         <th>Vigilancia</th>
+        <th>Ajuste</th>
         <th>Total</th>
     </tr>
     {% for payment in payments %}
@@ -98,6 +111,7 @@
         <td>{{ payment.percentage }}%</td>
         <td class="amountCol">S/ {{ "{:,.2f}".format(payment.total_expenses) }}</td>
         <td class="amountCol">S/ {{ "{:,.2f}".format(payment.total_security) }}</td>
+        <td class="amountCol">S/ {{ "{:,.2f}".format(payment.adjustment) }}</td>
         <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(payment.total) }}</strong></td>
     </tr>
     {% endfor %}
@@ -106,6 +120,7 @@
         <td><strong>100%</strong></td>
         <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(totals.total_apt_expenses) }}</strong></td>
         <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(totals.total_apt_security) }}</strong></td>
+        <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(totals.total_adjustments) }}</strong></td>
         <td class="amountCol"><strong>S/ {{ "{:,.2f}".format(totals.total_apt) }}</strong></td>
     </tr>
 </table>

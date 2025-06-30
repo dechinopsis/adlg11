@@ -76,32 +76,41 @@ def calculate_payments(meta_file: str, period_file: str, period: str = None):
         for item in period_info.get("others", [])
     ]
 
+    # Extract fixes (adjustments)
+    fixes = period_info.get("fixes", {})
+
     # Calculate costs per apartment
     results = []
     total_apt_security = 0
     total_apt_expenses = 0
+    total_apt_adjustments = 0
     total_apt = 0
+
     for apartment in meta_data["apartments"]:
+        apt_id = apartment["id"]
         factor = apartment["percentage"] / 100
         apartment_expenses = factor * total_expenses
+        adjustment = fixes.get(apt_id, 0)
         total_payment = apartment_expenses + security_per_apartment
+        final_total = total_payment + adjustment
 
         total_apt_expenses += apartment_expenses
         total_apt_security += security_per_apartment
-        total_apt += total_payment
+        total_apt_adjustments += adjustment
+        total_apt += final_total
 
         results.append({
-            "id": apartment["id"],
+            "id": apt_id,
             "name": apartment["name"],
             "percentage": apartment["percentage"],
             "total_expenses": round(apartment_expenses, 2),
             "total_security": round(security_per_apartment, 2),
-            "total": round(total_payment, 2)
+            "adjustment": round(adjustment, 2),
+            "total": round(final_total, 2)
         })
 
     total_commons = sum(item["total"] for item in commons_expenses)
     total_others = sum(item["total"] for item in others_expenses)
-
     total_expenses = round(total_commons + total_others, 2)
 
     return {
@@ -116,10 +125,11 @@ def calculate_payments(meta_file: str, period_file: str, period: str = None):
         "totals": {
             "total_apt_expenses": round(total_apt_expenses, 2),
             "total_apt_security": round(total_apt_security, 2),
+            "total_adjustments": round(total_apt_adjustments, 2),
             "total_apt": round(total_apt, 2),
             "total_security": total_security,
             "total_expenses": total_expenses,
-            "total": round(total_security + total_expenses, 2)
+            "total": round(total_security + total_expenses + total_apt_adjustments, 2)
         }
     }
 
