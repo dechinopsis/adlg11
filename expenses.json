@@ -203,7 +203,10 @@
           "concept": "Artículos de Limpieza",
           "total": 24.70
         }
-      ]
+      ],
+       "fixes": {
+         "401": -0.06
+       }
     },
      {
       "id": "aug2025",
@@ -230,7 +233,7 @@
       "others": [
         {
           "concept": "Reles Ascensor cuota 2",
-          "total": 0.1
+          "total": 428.47
         }
       ]
     },
