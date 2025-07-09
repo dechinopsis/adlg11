@@ -104,4 +104,4 @@ def main(period):
 
 
 if __name__ == "__main__":
-    main('06/2025')
+    main('07/2025')
