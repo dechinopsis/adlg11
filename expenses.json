@@ -107,7 +107,7 @@
         }
       ]
     },
-     {
+    {
       "id": "may2025",
       "label": "MAYO 2025",
       "commons": [
@@ -136,7 +136,7 @@
         }
       ]
     },
-     {
+    {
       "id": "jun2025",
       "label": "Junio 2025",
       "commons": [
@@ -167,16 +167,16 @@
           "concept": "Artículos de Limpieza",
           "total": 25.21
         },
-         {
+        {
           "concept": "Reles Ascensor cuota 1",
           "total": 581.88
         }
       ],
-       "fixes": {
-         "401": -7.13
-       }
+      "fixes": {
+        "401": -7.13
+      }
     },
-     {
+    {
       "id": "jul2025",
       "label": "Julio 2025",
       "commons": [
@@ -199,16 +199,16 @@
       ],
       "security": 2080,
       "others": [
-         {
+        {
           "concept": "Artículos de Limpieza",
           "total": 24.70
         }
       ],
-       "fixes": {
-         "401": -0.06
-       }
+      "fixes": {
+        "401": -0.06
+      }
     },
-     {
+    {
       "id": "aug2025",
       "label": "Agosto 2025",
       "commons": [
@@ -237,7 +237,7 @@
         }
       ]
     },
-     {
+    {
       "id": "sep2025",
       "label": "Septiembre 2025",
       "commons": [
@@ -260,10 +260,13 @@
       ],
       "security": 1040,
       "others": [
-
+        {
+          "concept": "Reles Ascensor cuota 3",
+          "total": 0.01
+        }
       ]
     },
-     {
+    {
       "id": "oct2025",
       "label": "Octubre 2025",
       "commons": [
@@ -287,12 +290,12 @@
       "security": 1040,
       "others": [
         {
-          "concept": "Reles Ascensor cuota 3",
-          "total": 0.1
+          "concept": "Limpieza Tanque Julio2025",
+          "total": 380
         }
       ]
     },
-     {
+    {
       "id": "nov2025",
       "label": "Noviembre 2025",
       "commons": [
