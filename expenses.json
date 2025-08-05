@@ -235,7 +235,10 @@
           "concept": "Reles Ascensor cuota 2",
           "total": 428.47
         }
-      ]
+      ],
+      "fixes": {
+        "401": -0.12
+      }
     },
     {
       "id": "sep2025",
