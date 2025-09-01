@@ -265,9 +265,12 @@
       "others": [
         {
           "concept": "Reles Ascensor cuota 3",
-          "total": 0.01
+          "total": 426.81
         }
-      ]
+      ],
+      "fixes": {
+        "401": -0.41
+      }
     },
     {
       "id": "oct2025",
@@ -295,6 +298,10 @@
         {
           "concept": "Limpieza Tanque Julio2025",
           "total": 380
+        },
+        {
+          "concept": "Resanado pintura garage",
+          "total": 151.40
         }
       ]
     },
