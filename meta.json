@@ -7,7 +7,7 @@
             "responsible": "CESAR PADILLA",
             "moneySource": "EFECTIVO",
             "usualAmount": 200.0,
-            "enum": 15
+            "enum": 17
         },
         "grdServ": {
             "name": "gardening",
