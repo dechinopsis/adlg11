@@ -302,12 +302,11 @@
         {
           "concept": "Limpieza Tanque Julio2025",
           "total": 380
-        },
-        {
-          "concept": "Resanado pintura garage",
-          "total": 151.40
         }
-      ]
+      ],
+      "fixes": {
+        "401": -0.51
+      }
     },
     {
       "id": "nov2025",
@@ -335,6 +334,22 @@
         {
           "concept": "Cerco eléctrico 2da cuota",
           "total": 415.85
+        },
+        {
+          "concept": "Resanado pintura garage",
+          "total": 151.40
+        },
+        {
+          "concept": "Artículos de limpieza",
+          "total": 41.80
+        },
+        {
+          "concept": "Artículos de limpieza",
+          "total": 41.80
+        },
+        {
+          "concept": "Rev. Sensor de mov. 4to piso",
+          "total": 30
         }
       ]
     }
