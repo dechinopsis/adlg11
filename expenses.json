@@ -267,7 +267,7 @@
           "concept": "Reles Ascensor cuota 3",
           "total": 426.81
         },
-         {
+        {
           "concept": "Artículos de limpieza",
           "total": 12
         }
@@ -318,7 +318,43 @@
         },
         {
           "concept": "grdServ",
-          "total": 50
+          "total": 60
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1560,
+      "others": [
+        {
+          "concept": "Artículos de limpieza",
+          "total": 41.80
+        },
+        {
+          "concept": "Rev. Sensor de mov. 4to piso",
+          "total": 30
+        }
+      ],
+      "fixes": {
+        "401": -0.35
+      }
+    },
+    {
+      "id": "dic2025",
+      "label": "December 2025",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 600
+        },
+        {
+          "concept": "grdServ",
+          "total": 60
         },
         {
           "concept": "elvServ",
@@ -340,16 +376,16 @@
           "total": 151.40
         },
         {
-          "concept": "Artículos de limpieza",
-          "total": 41.80
+          "concept": "2da pasada pintura garage",
+          "total": 120.00
         },
         {
-          "concept": "Artículos de limpieza",
-          "total": 41.80
+          "concept": "Mantenimiento extintores",
+          "total": "????"
         },
         {
-          "concept": "Rev. Sensor de mov. 4to piso",
-          "total": 30
+          "concept": "Escalera Telescopica Plegable",
+          "total": 239.00
         }
       ]
     }
