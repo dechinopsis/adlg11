@@ -381,13 +381,20 @@
         },
         {
           "concept": "Mantenimiento extintores",
-          "total": "????"
+          "total": 120.00
         },
         {
-          "concept": "Escalera Telescopica Plegable",
-          "total": 239.00
+          "concept": "Escalera Telescópica Plegable",
+          "total": 258.90
+        },
+        {
+          "concept": "Articulos de limpieza",
+          "total": 45.71
         }
-      ]
+      ],
+      "fixes": {
+        "402": 0.10
+      }
     }
   ]
 }
