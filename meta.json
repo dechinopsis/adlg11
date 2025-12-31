@@ -7,7 +7,7 @@
             "responsible": "CESAR PADILLA",
             "moneySource": "EFECTIVO",
             "usualAmount": 200.0,
-            "enum": 22
+            "enum": 24
         },
         "grdServ": {
             "name": "gardening",
@@ -15,7 +15,7 @@
             "shortLabel": "Jardiner\u00eda",
             "responsible": "LEONARDO MENDOZA",
             "moneySource": "YAPE",
-            "enum": 11
+            "enum": 12
         },
         "elvServ": {
             "name": "elevator",
@@ -74,7 +74,7 @@
         },
         {
             "id": "501",
-            "name": "Familia Howard Mella",
+            "name": "Familia Zavalaga Lopez",
             "percentage": 16.96
         }
     ],
