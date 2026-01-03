@@ -79,7 +79,7 @@ def main(_period):
             'admin_full_name': admin["name"],
             'amount': f"{movement_amount:.2f}",
             'amount_words': amount_to_words(movement_amount),
-            'concept': f'Mantenimiento {result['period_name']}',
+            'concept': f'Rebobinado del motor del ascensor, desmontaje, traslado y montaje',
             'payment_method': 'Transferencia bancaria',
             'imgs': {
                 'signature_qr': qr_base64,

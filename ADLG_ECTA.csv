@@ -171,29 +171,29 @@ nov2025018,Pago APTO301 NOV2025,30/11/25,APTO301,,322.99
 nov2025019,Pago APTO101 NOV2025,30/11/25,APTO101,,329.57
 dec2025001,Pago Cesar Padilla(Limpieza),11/12/25,CLNSERV-022,200,
 dec2025002,Gratificación Vigilancia,12/12/25,,1040,
-dec2025003,Pago APTO501 DEC2025,15/12/25,APTO501,,378.29
-dec2025004,Pago APTO402 DEC2025,15/12/25,APTO402,,332.13
-dec2025005,Pago APTO401 DEC2025,16/12/25,APTO401,,318.5
-dec2025006,Pago APTO302 DEC2025,16/12/25,APTO302,,332.03
-dec2025007,Pago APTO201 DEC2025,17/12/25,APTO201,,310.2
+dec2025003,Pago APTO501 DEC2025,15/12/25,,,378.29
+dec2025004,Pago APTO402 DEC2025,15/12/25,,,332.13
+dec2025005,Pago APTO401 DEC2025,16/12/25,,,318.5
+dec2025006,Pago APTO302 DEC2025,16/12/25,,,332.03
+dec2025007,Pago APTO201 DEC2025,17/12/25,,,310.2
 dec2025008,Pago Leonardo Mendoza(Jardinería),18/12/25,GRDSERV-011,70,
 dec2025009,Compra canasta navideña Sr Cesar,19/12/25,,84.9,
 dec2025010,Visita Emergencia Br Electr. Luis Vargas,20/12/25,,180,
 dec2025011,Llaves thermo magnéticas y otros repuestos,22/12/25,,80,
 dec2025012,Remplazo llaves Br Electr. Luis Vargas,22/12/25,,120,
-dec2025013,Pago APTO101 DEC2025,23/12/25,APTO101,,325.23
-dec2025014,Cuota extraordinaria Ascensor APTO501,23/12/25,,,983.68
-dec2025015,Cuota extraordinaria Ascensor APTO402,23/12/25,,,735.44
-dec2025016,Cuota extraordinaria Ascensor APTO101,23/12/25,,,698.9
-dec2025017,Cuota extraordinaria Ascensor APTO302,23/12/25,,,735.44
-dec2025018,Cuota extraordinaria Ascensor APTO401,23/12/25,,,665
-dec2025019,Pago APTO202 DEC2025,23/12/25,APTO202,,325.23
-dec2025020,Pago APTO301 DEC2025,23/12/25,APTO301,,318.85
+dec2025013,Pago APTO101 DEC2025,23/12/25,,,325.23
+dec2025014,Cuota extraordinaria Ascensor APTO501,23/12/25,APTO501,,983.68
+dec2025015,Cuota extraordinaria Ascensor APTO402,23/12/25,APTO402,,735.44
+dec2025016,Cuota extraordinaria Ascensor APTO101,23/12/25,APTO101,,698.9
+dec2025017,Cuota extraordinaria Ascensor APTO302,23/12/25,APTO302,,735.44
+dec2025018,Cuota extraordinaria Ascensor APTO401,23/12/25,APTO401,,665
+dec2025019,Pago APTO202 DEC2025,23/12/25,,,325.23
+dec2025020,Pago APTO301 DEC2025,23/12/25,,,318.85
 dec2025021,Adelanto rebobinado de motor ascensor,23/12/25,,3500,
 dec2025022,ITF,23/12/25,,0.15,
 dec2025023,Pago Cesar Padilla(Limpieza),25/12/25,CLNSERV-023,200,
-dec2025024,Cuota extraordinaria Ascensor APTO202,26/12/25,,,698.9
-dec2025025,Cuota extraordinaria Ascensor APTO201,27/12/25,,,618.28
+dec2025024,Cuota extraordinaria Ascensor APTO202,26/12/25,APTO202,,698.9
+dec2025025,Cuota extraordinaria Ascensor APTO201,27/12/25,APTO201,,618.28
 dec2025026,Cancelado rebobinado de motor ascensor,29/12/25,,1500,
 dec2025027,ITF,29/12/25,,0.05,
 dec2025028,Adelanto transporte motor ascensor,30/12/25,,300,
@@ -201,4 +201,4 @@ dec2025029,Vigilancia,30/12/25,,1040,
 dec2025030,Sistema Salvamotor de ascensor,31/12/25,,348.8,
 dec2025031,SEAL,31/12/25,,213.6,
 dec2025032,Mantenimiento de Ascensor,31/12/25,,295,
-dec2025033,Cuota extraordinaria Ascensor APTO301,31/12/25,,,664.68
+dec2025033,Cuota extraordinaria Ascensor APTO301,31/12/25,APTO301,,664.68
