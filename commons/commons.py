@@ -146,11 +146,13 @@ def calculate_balance_and_movements(data, period):
     current_balance = 0
     movements = []
 
-    period = int(period.replace('/', ''))
+    month, year = period.split('/')
+    period = int(year + month.zfill(2))
 
     for row in data:
         date = datetime.strptime(row['Date'], '%d/%m/%y')
-        month_year = int(date.strftime('%m%Y'))
+        month_year = date.year * 100 + date.month
+
         movement = round(float(row['Credit'] or 0) - float(row['Debit'] or 0), 2)
 
         if month_year < period:

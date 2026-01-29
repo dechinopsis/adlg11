@@ -413,7 +413,7 @@
       }
     },
     {
-      "id": "jan2025",
+      "id": "jan2026",
       "label": "January 2026",
       "commons": [
         {
@@ -436,28 +436,51 @@
       "security": 1040,
       "others": [
         {
-          "concept": "Cerco eléctrico 2da cuota",
-          "total": 415.85
-        },
-        {
-          "concept": "Resanado pintura garage",
+          "concept": "Resanado pintura garage(08/2025)",
           "total": 151.40
         },
         {
-          "concept": "2da pasada pintura garage",
+          "concept": "Mantenimiento extintores(11/2025)",
           "total": 120.00
         },
         {
-          "concept": "Mantenimiento extintores",
-          "total": 120.00
-        },
-        {
-          "concept": "Escalera Telescópica Plegable",
+          "concept": "Escalera Plegable(11/2025)",
           "total": 258.90
         }
       ],
       "fixes": {
-        "402": 0.10
+        "401": -0.33
+      }
+    },
+    {
+      "id": "feb2026",
+      "label": "Febrero 2026",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 60
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+        {
+          "concept": "2do Resanado pintura garage",
+          "total": 120.00
+        }
+      ],
+      "fixes": {
       }
     }
   ]
