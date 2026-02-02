@@ -49,30 +49,22 @@ For &ordinal in &ordinalsJson
 	&Trasuc = 0
 	&Trfsuc = 0
     Do Case
-        Case &sucursalTipo = "sucursal matriz"
-            &Trpsuc = 'M'
-        Case &sucursalTipo = "sucursal de trabajo"
-            &Trpsuc = 'N'
-        Case &sucursalTipo = "solicitar"
-            &Trpsuc = 'S'
-        Case &sucursalTipo = "solicitar sugiriendo la de trabajo"
-            &Trpsuc = 'B'
-        Case &sucursalTipo = "forzar valor"
-            &Trpsuc = 'F'
-            &Trfsuc = &sucursalJson.Get(!"valor").ToNumeric()
         Case &sucursalTipo = "obtener de ordinal anterior"
-            &Trpsuc = 'A'
-            &Trasuc = &sucursalJson.Get(!"ordinal_nro").ToNumeric()
+			&Trpsuc = 'A'
+			&Trasuc = &sucursalJson.Get(!"ordinal_nro").ToNumeric()
+        Case &sucursalTipo = "obtener del preformato"
+			&Trpsuc = 'P'
+			&Trasuc = &sucursalJson.Get(!"preformato_nro").ToNumeric()
+        Case &sucursalTipo = "obtener del preformato y pedir"
+			&Trpsuc = 'Q'
+			&Trasuc = &sucursalJson.Get(!"preformato_nro").ToNumeric()
+        Case &sucursalTipo = "forzar valor"
+			&Trpsuc = 'F'
+			&Trfsuc = &sucursalJson.Get(!"valor").ToNumeric()
         Case &sucursalTipo = "obtener de la cuenta"
             &Trpsuc = 'C'
-        Case &sucursalTipo = "capturar por medio externo"
-            &Trpsuc = 'E'
-        Case &sucursalTipo = "obtener del preformato"
-            &Trpsuc = 'P'
-            &Trasuc = &sucursalJson.Get(!"preformato_nro").ToNumeric()
-        Case &sucursalTipo = "obtener del preformato y pedir"
-            &Trpsuc = 'Q'
-            &Trasuc = &sucursalJson.Get(!"preformato_nro").ToNumeric()
+        Case &sucursalTipo = "solicitar"
+            &Trpsuc = 'S'
     EndCase
 
     &especieJson.FromJson(&ordinal.Get(!"especie"))
@@ -81,8 +73,6 @@ For &ordinal in &ordinalsJson
 	&Trapap = 0
 	&Trfpap = 0
     Do Case
-        Case &especieTipo = "no corresponde"
-            &Trppap = 'N'
         Case &especieTipo = "solicitar"
             &Trppap = 'S'
         Case &especieTipo = "forzar valor"
@@ -105,8 +95,6 @@ For &ordinal in &ordinalsJson
 	&Tramda = 0
 	&Trfmda = 0
     Do Case
-        Case &monedaTipo = "no corresponde"
-            &Trpmda = 'N'
         Case &monedaTipo = "solicitar"
             &Trpmda = 'S'
         Case &monedaTipo = "forzar valor"
@@ -121,12 +109,6 @@ For &ordinal in &ordinalsJson
         Case &monedaTipo = "obtener del preformato y pedir"
             &Trpmda = 'Q'
             &Tramda = &monedaJson.Get(!"preformato_nro").ToNumeric()
-        Case &monedaTipo = "capturar por medio externo"
-            &Trpmda = 'E'
-        Case &monedaTipo = "forzar moneda nacional"
-            &Trpmda = 'M'
-        Case &monedaTipo = "forzar moneda extranjera"
-            &Trpmda = 'D'
     EndCase
 
     &cuentaJson.FromJson(&ordinal.Get(!"cuenta"))
@@ -135,8 +117,6 @@ For &ordinal in &ordinalsJson
 	&Tracta = 0
 	&Trfcta = 0
     Do Case
-        Case &cuentaTipo = "no corresponde"
-            &Trpcta = 'N'
         Case &cuentaTipo = "solicitar"
             &Trpcta = 'S'
         Case &cuentaTipo = "forzar valor"
@@ -145,17 +125,12 @@ For &ordinal in &ordinalsJson
         Case &cuentaTipo = "obtener de ordinal anterior"
             &Trpcta = 'A'
             &Tracta = &cuentaJson.Get(!"ordinal_nro").ToNumeric()
-        Case &cuentaTipo = "obtener de ordinal anterior y pedir"
-            &Trpcta = 'B'
-            &Tracta = &cuentaJson.Get(!"ordinal_nro").ToNumeric()
         Case &cuentaTipo = "obtener del preformato"
             &Trpcta = 'P'
             &Tracta = &cuentaJson.Get(!"preformato_nro").ToNumeric()
         Case &cuentaTipo = "obtener del preformato y pedir"
             &Trpcta = 'Q'
             &Tracta = &cuentaJson.Get(!"preformato_nro").ToNumeric()
-        Case &cuentaTipo = "capturar por medio externo"
-            &Trpcta = 'E'
     EndCase
 
     &nroOperacionJson.FromJson(&ordinal.Get(!"nroOperacion"))
@@ -164,8 +139,6 @@ For &ordinal in &ordinalsJson
 	&Traop = 0
 	&Trfop = 0
     Do Case
-        Case &nroOperacionTipo = "no corresponde"
-            &Trpop = 'N'
         Case &nroOperacionTipo = "solicitar"
             &Trpop = 'S'
         Case &nroOperacionTipo = "forzar valor"
@@ -174,22 +147,12 @@ For &ordinal in &ordinalsJson
         Case &nroOperacionTipo = "obtener de ordinal anterior"
             &Trpop = 'A'
             &Traop = &nroOperacionJson.Get(!"ordinal_nro").ToNumeric()
-        Case &nroOperacionTipo = "automatica por sucursal"
-            &Trpop = 'U'
-        Case &nroOperacionTipo = "automatica por modulo"
-            &Trpop = 'M'
         Case &nroOperacionTipo = "obtener del preformato"
             &Trpop = 'P'
             &Traop = &nroOperacionJson.Get(!"preformato_nro").ToNumeric()
         Case &nroOperacionTipo = "obtener del preformato y pedir"
             &Trpop = 'Q'
             &Traop = &nroOperacionJson.Get(!"preformato_nro").ToNumeric()
-        Case &nroOperacionTipo = "resuelve con fecha valor"
-            &Trpop = 'B'
-        Case &nroOperacionTipo = "resuelve con fecha valor contable"
-            &Trpop = 'V'
-        Case &nroOperacionTipo = "resuelve con fecha de contabilización"
-            &Trpop = 'I'
     EndCase
 
     &subOperacionJson.FromJson(&ordinal.Get(!"subOperacion"))
@@ -198,8 +161,6 @@ For &ordinal in &ordinalsJson
 	&Trasop = 0
 	&Trfsop = 0
     Do Case
-        Case &subOperacionTipo = "no corresponde"
-            &Trpsop = 'N'
         Case &subOperacionTipo = "solicitar"
             &Trpsop = 'S'
         Case &subOperacionTipo = "forzar valor"
@@ -208,21 +169,12 @@ For &ordinal in &ordinalsJson
         Case &subOperacionTipo = "obtener de ordinal anterior"
             &Trpsop = 'A'
             &Trasop = &subOperacionJson.Get(!"ordinal_nro").ToNumeric()
-        Case &subOperacionTipo = "obtener de ordinal anterior e incrementar"
-            &Trpsop = 'B'
-            &Trasop = &subOperacionJson.Get(!"ordinal_nro").ToNumeric()
-        Case &subOperacionTipo = "forzar nro de caja"
-            &Trpsop = 'C'
         Case &subOperacionTipo = "obtener del preformato"
             &Trpsop = 'P'
             &Trasop = &subOperacionJson.Get(!"preformato_nro").ToNumeric()
         Case &subOperacionTipo = "obtener del preformato y pedir"
             &Trpsop = 'Q'
             &Trasop = &subOperacionJson.Get(!"preformato_nro").ToNumeric()
-        Case &subOperacionTipo = "capturar por medio externo"
-            &Trpsop = 'E'
-        Case &subOperacionTipo = "resuelve con nro de relación"
-            &Trpsop = 'H'
     EndCase
 
     &tipoOperacionJson.FromJson(&ordinal.Get(!"tipoOperacion"))
@@ -231,10 +183,8 @@ For &ordinal in &ordinalsJson
 	&Tratop = 0
 	&Trftop = 0
     Do Case
-        Case &tipoOperacionTipo = "no corresponde"
-            &Trptop = 'N'
-        Case &tipoOperacionTipo = "tratamiento automatico"
-            &Trptop = Chr(0)
+        Case &tipoOperacionTipo = "solicitar"
+            &Trptop = 'S'
         Case &tipoOperacionTipo = "forzar valor"
             &Trptop = 'F'
             &Trftop = &tipoOperacionJson.Get(!"valor").ToNumeric()
@@ -249,102 +199,7 @@ For &ordinal in &ordinalsJson
             &Tratop = &tipoOperacionJson.Get(!"preformato_nro").ToNumeric()
     EndCase
 
-    &fechaValorJson.FromJson(&ordinal.Get(!"fechaValor"))
-    &fechaValorTipo = &fechaValorJson.Get(!"tipo")
-    &Trfval = 'N'
-    &Traval = 0
-    Do Case
-        Case &fechaValorTipo = "no corresponde"
-            &Trfval = 'N'
-        Case &fechaValorTipo = "admite fecha valor pasado"
-            &Trfval = 'P'
-        Case &fechaValorTipo = "admite fecha valor futuro"
-            &Trfval = 'F'
-        Case &fechaValorTipo = "admite fecha valor pasado y/o futuro"
-            &Trfval = 'I'
-        Case &fechaValorTipo = "obtener de la operacion existente"
-            &Trfval = 'E'
-        Case &fechaValorTipo = "obtener de ordinal anterior"
-            &Trfval = 'A'
-            &Traval = &fechaValorJson.Get(!"ordinal_nro").ToNumeric()
-        Case &fechaValorTipo = "forzar la fecha valor contable"
-            &Trfval = 'C'
-        Case &fechaValorTipo = "obtener del preformato"
-            &Trfval = 'Q'
-            &Traval = &fechaValorJson.Get(!"preformato_nro").ToNumeric()
-        Case &fechaValorTipo = "obtener del preformato y pedir"
-            &Trfval = 'R'
-            &Traval = &fechaValorJson.Get(!"preformato_nro").ToNumeric()
-        Case &fechaValorTipo = "vencimiento anterior"
-            &Trfval = 'B'
-    EndCase
-
-    &fechaVtoJson.FromJson(&ordinal.Get(!"fechaVto"))
-    &fechaVtoTipo = &fechaVtoJson.Get(!"tipo")
-    &Trfvto = 'N'
-    &Travto = 0
-    Do Case
-        Case &fechaVtoTipo = "no corresponde"
-            &Trfvto = 'N'
-        Case &fechaVtoTipo = "solicitar el plazo"
-            &Trfvto = 'P'
-        Case &fechaVtoTipo = "solicitar fecha de vencimiento"
-            &Trfvto = 'V'
-        Case &fechaVtoTipo = "solicitar el plazo y la fecha de vencimiento"
-            &Trfvto = 'I'
-        Case &fechaVtoTipo = "obtener de la operacion existente"
-            &Trfvto = 'E'
-        Case &fechaVtoTipo = "obtener de ordinal anterior"
-            &Trfvto = 'A'
-            &Travto = &fechaVtoJson.Get(!"ordinal_nro").ToNumeric()
-        Case &fechaVtoTipo = "se resuelve en una RTE"
-            &Trfvto = 'R'
-        Case &fechaVtoTipo = "obtener del preformato"
-            &Trfvto = 'S'
-            &Travto = &fechaVtoJson.Get(!"preformato_nro").ToNumeric()
-        Case &fechaVtoTipo = "obtener plazo del preformato"
-            &Trfvto = 'Q'
-            &Travto = &fechaVtoJson.Get(!"preformato_nro").ToNumeric()
-        Case &fechaVtoTipo = "obtener fecha valor anterior"
-            &Trfvto = 'F'
-        Case &fechaVtoTipo = "obtener de fecha valor"
-            &Trfvto = 'B'
-        Case &fechaVtoTipo = "forzar fecha valor contable"
-            &Trfvto = 'C'
-        Case &fechaVtoTipo = "forzar fecha de contabilizacion"
-            &Trfvto = 'D'
-        Case &fechaVtoTipo = "obtener plazo de la operacion existente"
-            &Trfvto = 'G'
-    EndCase
-
-    &importeJson.FromJson(&ordinal.Get(!"importe"))
-    &importeTipo = &importeJson.Get(!"tipo")
-    &Trpimp = 'S'
-    &Traimp = 0
-    Do Case
-        Case &importeTipo = "solicitar"
-            &Trpimp = 'S'
-        Case &importeTipo = "obtener de ordinal anterior"
-            &Trpimp = 'A'
-            &Traimp = &importeJson.Get(!"ordinal_nro").ToNumeric()
-        Case &importeTipo = "obtener de ordinal anterior y pedir"
-            &Trpimp = 'B'
-            &Traimp = &importeJson.Get(!"ordinal_nro").ToNumeric()
-        Case &importeTipo = "obtener de saldo de la operacion existente"
-            &Trpimp = 'E'
-        Case &importeTipo = "obtener de saldo de la operacion existente y pedir"
-            &Trpimp = 'F'
-        Case &importeTipo = "obtener del preformato"
-            &Trpimp = 'P'
-            &Traimp = &importeJson.Get(!"preformato_nro").ToNumeric()
-        Case &importeTipo = "obtener del preformato y pedir"
-            &Trpimp = 'Q'
-            &Traimp = &importeJson.Get(!"preformato_nro").ToNumeric()
-        Case &importeTipo = "se resuelve en una RTE"
-            &Trpimp = 'R'
-    EndCase
-
-	New //--FST035
+	New //--FST035 - TODO: Incluir campos con valores por defecto
 	Pgcod    = &Pgcod
 	Trmod    = &Trmod
 	Trnro    = &Trnro
@@ -372,12 +227,6 @@ For &ordinal in &ordinalsJson
 	Trptop   = &Trptop
 	Tratop   = &Tratop
 	Trftop   = &Trftop
-	Trfval   = &Trfval
-	Traval   = &Traval
-	Trfvto   = &Trfvto
-	Travto   = &Travto
-	Trpimp   = &Trpimp
-	Traimp   = &Traimp
 	EndNew
 
     Do 'Add subordinal'
