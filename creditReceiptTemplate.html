@@ -13,110 +13,148 @@
     {% endblock %}
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff;
+            color: #000;
             margin: 0;
             padding: 0;
+            font-size: 12px;
+            line-height: 1.4;
         }
         .container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            line-height: 1.6;
+            width: 82%;
+            margin: 16px auto;
+            padding: 12px 16px;
+            border: 1px solid #555;
+            box-sizing: border-box;
         }
         .header {
             text-align: center;
-            font-size: 20px;
+            font-size: 15px;
             font-weight: bold;
-            margin-bottom: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
+            margin-bottom: 0;
         }
+        .header::before { content: "[ "; }
+        .header::after  { content: " ]"; }
+
         .header2 {
             text-align: center;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 5px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin-top: 2px;
+            margin-bottom: 6px;
         }
-        .content p {
-            margin: 10px 0;
-            font-size: 16px;
+        .divider {
+            border: none;
+            border-top: 1px dashed #555;
+            margin: 6px 0;
         }
-        .footer {
-            margin-top: 40px;
+        .meta-row {
             display: flex;
             justify-content: space-between;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
-        .signature {
+        .content {
+            margin-top: 8px;
+        }
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .content table td {
+            padding: 3px 0;
+            font-size: 12px;
+            vertical-align: top;
+        }
+        .content table td:first-child {
+            width: 38%;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            color: #333;
+        }
+        .signature-section {
+            margin-top: 24px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .signature-box {
             text-align: center;
-            margin-top: 50px;
-            flex: 1;
-        }
-        .signature p {
-            margin: 5px 0;
         }
         .signature-line {
-            border-top: 1px solid #333;
-            width: 80%;
-            margin: 0 auto;
-            margin-bottom: 5px;
+            display: block;
+            width: 220px;
+            border-top: 1px solid #000;
+            margin-bottom: 4px;
+            margin-top: 50px;
         }
-        .admin-details {
-            font-size: 14px;
-            color: #555;
+        .right-align { text-align: right; }
+        .voucher-container {
+            width: 82%;
+            margin: 0 auto 16px auto;
+            padding: 10px 16px;
+            border: 1px solid #555;
+            text-align: center;
+            box-sizing: border-box;
+            margin-top: 0;
         }
-        .right-align {
-            text-align: right;
+        .voucher-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed #999;
+            padding-bottom: 4px;
+            margin-bottom: 8px;
         }
+        .voucher-label::before { content: "> "; }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header">RECIBO POR PAGO DE MANTENIMIENTO</div>
-    <div class="header2">Alto de la gloria 11</div>
+    <div class="header">Recibo por Pago de Mantenimiento</div>
+    <div class="header2">Alto de la Gloria 11</div>
+    <hr class="divider"/>
+    <div class="meta-row">
+        <span>No. {{ receipt_number }}</span>
+        <span>Arequipa, {{ date }}</span>
+    </div>
+    <hr class="divider"/>
     <div class="content">
-        <p class="right-align"><strong>No.</strong> {{ receipt_number }}</p>
-        <p class="right-align">Arequipa, {{ date }}</p>
-        <br>
-        <p><strong>Recibí de:</strong> {{ from_label }}</p>
-        <p><strong>La cantidad de:</strong> S/ {{ amount }} - {{ amount_words }}</p>
-        <p><strong>Por concepto de:</strong> {{ concept }}</p>
-        <p><strong>Medio de pago:</strong> {{ payment_method }}</p>
+        <table>
+            <tr><td>Recibí de:</td><td>{{ from_label }}</td></tr>
+            <tr><td>La cantidad de:</td><td>S/ {{ amount }} — {{ amount_words }}</td></tr>
+            <tr><td>Por concepto de:</td><td>{{ concept }}</td></tr>
+            <tr><td>Medio de pago:</td><td>{{ payment_method }}</td></tr>
+        </table>
     </div>
-    <br/><br/>
-    <table style="width: 100%;">
-        <tr>
-            <td style="width: 40%;"></td> <!-- Celda vacía (50%) -->
-            <td style="width: 60%; text-align: center; padding-top: 20px;">
-                <table>
-                    <tr>
-                        <td style="text-align: center; padding-right: 20px;">
-                            <span style="display: block; width: 300px; border-top: 1px solid black;"></span>
-                            <strong>{{admin_full_name}}</strong><br>
-                            <strong>DNI </strong>70009504</strong>
-                        </td>
-                        <td>
-                            <img style="width: 50px; height: 50px;"
-                                 src="data:image/png;base64,{{ imgs.signature_qr }}"/>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-
-
+    <hr class="divider" style="margin-top: 20px;"/>
+    <div class="signature-section">
+        <table style="margin: 0;">
+            <tr>
+                <td style="text-align: center; vertical-align: bottom; padding-right: 15px;">
+                    <span class="signature-line"></span>
+                    <strong>{{ admin_full_name }}</strong><br>
+                    DNI 70009504
+                </td>
+                <td style="text-align: center; vertical-align: bottom;">
+                    <img style="width: 50px; height: 50px;"
+                         src="data:image/png;base64,{{ imgs.signature_qr }}"/><br>
+                    <small>Firma Digital</small>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
-<div class="container">
-    <div style="text-align: center">
-        <img style="width: auto; height: 500px;" src="{{ imgs.voucher_url }}"/>
-    </div>
+<div class="voucher-container">
+    <div class="voucher-label">Comprobante de pago</div>
+    <img style="width: auto; height: 500px;" src="{{ imgs.voucher_url }}"/>
 </div>
 </body>
 </html>

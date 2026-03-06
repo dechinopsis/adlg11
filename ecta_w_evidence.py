@@ -100,15 +100,38 @@ def main(period):
     <style>
         @page {
             size: A4 portrait;
-            margin: 0.5cm;
+            margin: 0.8cm 1cm 0.8cm 1cm;
         }
-        body { font-family: Arial, sans-serif; }
-        .page { page-break-after: always; margin: 10px; position: relative; }
-        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 5px; }
-        .info-table th, .info-table td { border: 1px solid #ddd; padding: 4px; text-align: center; }
-        .info-table th { background: #f1f1f1; }
-        .attachment { text-align: center; margin-top: 10px; }
-        .report-header { font-size: 12px; text-align: right; margin-bottom: 5px; }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff;
+            color: #000;
+            padding: 8px;
+            font-size: 12px;
+            line-height: 1.3;
+            margin: 0;
+        }
+        .page { page-break-after: always; position: relative; }
+        .report-header {
+            font-size: 10px;
+            text-align: right;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed #999;
+            padding-bottom: 3px;
+            margin-bottom: 6px;
+        }
+        .info-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+        .info-table th, .info-table td { border: 1px solid #555; padding: 2px 4px; font-size: 11px; }
+        .info-table th {
+            background-color: #ddd;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: left;
+        }
+        .info-table td { text-align: left; }
+        .info-table td:last-child { text-align: right; white-space: nowrap; }
+        .attachment { text-align: center; margin-top: 8px; border-top: 1px dashed #999; padding-top: 6px; }
         .responsive-img { width: auto; height: auto; max-width: 100%; max-height: 400px; object-fit: contain; }
         .pdf-img { width: auto; height: auto; max-width: 100%; max-height: 900px; object-fit: contain; }
     </style>
@@ -148,4 +171,4 @@ def main(period):
 
 
 if __name__ == "__main__":
-    main('01/2026')
+    main('02/2026')

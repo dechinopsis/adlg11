@@ -167,7 +167,7 @@ def calculate_balance_and_movements(data, period):
                 'Concept': row['Concept'],
                 'Reference': row['Reference'],
                 'NfDate': date,
-                'Date': date.strftime('%b%d').upper(),
+                'Date': date.strftime('%d/%m'),
                 'Debit': float(row['Debit'] or 0),
                 'Credit': float(row['Credit'] or 0)
             })
