@@ -478,6 +478,74 @@
         {
           "concept": "2do Resanado pintura garage",
           "total": 120.00
+        },
+        {
+          "concept": "Visita Emergencia Br Electr. Luis Vargas ",
+          "total": 180.00
+        },
+        {
+          "concept": "Llaves thermo magnéticas y otros repuestos",
+          "total": 80.00
+        },
+        {
+          "concept": "Remplazo de llave Br Electr. Luis Vargas",
+          "total": 120.00
+        }
+      ],
+      "fixes": {
+        "401": -0.73
+      }
+    },
+    {
+      "id": "mar2026",
+      "label": "March 2026",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 60
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+        {
+          "concept": "Sistema salvamotor ascensor",
+          "total": 348.80
+        },
+        {
+          "concept": "Instalación de sistema salvamotor ",
+          "total": 150.00
+        },
+        {
+          "concept": "Plásticos protectores de madera",
+          "total": 40.00
+        },
+        {
+          "concept": "Mantenimiento de cerradura",
+          "total": 40.00
+        },
+        {
+          "concept": "Pantallas de detección de cabina",
+          "total": 120.00
+        },
+        {
+          "concept": "Instalación de Pantallas de cabina",
+          "total": 200.00
+        },
+        {
+          "concept": "Articulos de limpieza 16/02",
+          "total": 47.74
         }
       ],
       "fixes": {

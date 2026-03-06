@@ -45,7 +45,7 @@ def generate_report(report_data):
 if __name__ == "__main__":
     meta_file = os.path.abspath("meta.json")
     period_file = os.path.abspath("expenses.json")
-    result = calculate_payments(meta_file, period_file, 'jan2026')
+    result = calculate_payments(meta_file, period_file, 'feb2026')
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
     assert result['totals']['total_apt_expenses'] == result['totals']['total_expenses']
