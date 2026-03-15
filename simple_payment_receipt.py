@@ -4,6 +4,7 @@ import os
 from datetime import datetime
 from jinja2 import Template
 from num2words import num2words
+from pdf2image import convert_from_path
 from weasyprint import HTML
 
 from commons.commons import amount_to_words
@@ -73,6 +74,10 @@ def generate_receipt(service_key):
     amount = get_amount(service)
     amount_words = amount_to_words(amount)
 
+    next_payment_date = None
+    if service_key == "clnServ":
+        next_payment_date = input("📅 Próxima fecha de pago: ").strip()
+
     with open(HTML_TEMPLATE, "r", encoding="utf-8") as file:
         html_template = file.read()
 
@@ -86,14 +91,19 @@ def generate_receipt(service_key):
         amount=f"{amount:.2f}",
         amount_words=amount_words,
         concept=service["description"],
-        payment_method=service["moneySource"]
+        payment_method=service["moneySource"],
+        next_payment_date=next_payment_date
     )
 
     os.makedirs(service_key, exist_ok=True)
     pdf_file = f"{service_key}/receipt_{receipt_number}.pdf"
     HTML(string=html_content).write_pdf(pdf_file)
 
-    print(f"\n✅ Receipt successfully generated: {pdf_file}")
+    images = convert_from_path(pdf_file)
+    png_file = f"{service_key}/receipt_{receipt_number}.png"
+    images[0].save(png_file, format="PNG")
+
+    print(f"\n✅ Receipt successfully generated: {pdf_file} | {png_file}")
 
 
 def main():
