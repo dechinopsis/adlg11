@@ -524,18 +524,43 @@
           "total": 348.80
         },
         {
-          "concept": "Instalación de sistema salvamotor ",
+          "concept": "Instalación de sistema salvamotor",
           "total": 150.00
         },
         {
           "concept": "Plásticos protectores de madera",
           "total": 40.00
+        }
+      ],
+      "fixes": {
+        "401": -0.67,
+        "202": -3.83
+      }
+    },
+    {
+      "id": "apr2026",
+      "label": "April 2026",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
         },
         {
-          "concept": "Mantenimiento de cerradura",
-          "total": 40.00
+          "concept": "grdServ",
+          "total": 60
         },
         {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+         {
           "concept": "Pantallas de detección de cabina",
           "total": 120.00
         },
@@ -544,13 +569,16 @@
           "total": 200.00
         },
         {
+          "concept": "Mantenimiento de cerradura",
+          "total": 40.00
+        },
+        {
           "concept": "Articulos de limpieza 16/02",
           "total": 47.74
         }
       ],
       "fixes": {
-        "401": -0.67,
-        "202": -3.83
+
       }
     }
   ]
