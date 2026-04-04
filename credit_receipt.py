@@ -72,6 +72,24 @@ def main(_period):
         movement_date = movement['NfDate'] if movement is not None else datetime.today()
         movement_amount = movement['Credit'] if movement is not None else apto['total']
 
+        expected_amount = apto['total']
+        difference = round(movement_amount - expected_amount, 2)
+
+        warning = None
+        if abs(difference) >= 0.01:
+            if difference > 0:
+                warning = (
+                    f"NOTA: Usted ha pagado S/ {movement_amount:.2f} y el monto correspondiente "
+                    f"es S/ {expected_amount:.2f}. La diferencia de S/ {difference:.2f} a su favor "
+                    f"se verá reflejada en el siguiente mes."
+                )
+            else:
+                warning = (
+                    f"NOTA: Usted ha pagado S/ {movement_amount:.2f} y el monto correspondiente "
+                    f"es S/ {expected_amount:.2f}. La diferencia de S/ {abs(difference):.2f} pendiente "
+                    f"se le cobrará en el siguiente mes."
+                )
+
         data_to_render = {
             'from_label': from_label,
             'date': movement_date.strftime('%d/%m/%Y'),
@@ -81,6 +99,7 @@ def main(_period):
             'amount_words': amount_to_words(movement_amount),
             'concept': f'Mantenimiento {result['period_name']}',
             'payment_method': 'Transferencia bancaria',
+            'warning': warning,
             'imgs': {
                 'signature_qr': qr_base64,
                 'voucher_url': voucher_url
@@ -99,5 +118,5 @@ def main(_period):
 
 
 if __name__ == "__main__":
-    period = 'feb2026'
+    period = 'mar2026'
     main(period)

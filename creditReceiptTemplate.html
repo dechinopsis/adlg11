@@ -96,6 +96,16 @@
             margin-top: 50px;
         }
         .right-align { text-align: right; }
+        .warning-box {
+            margin-top: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.5;
+            text-align: center;
+            color: #000;
+        }
         .voucher-container {
             width: 82%;
             margin: 0 auto 16px auto;
@@ -134,6 +144,9 @@
             <tr><td>Medio de pago:</td><td>{{ payment_method }}</td></tr>
         </table>
     </div>
+    {% if warning %}
+    <div class="warning-box">**** {{ warning }} ****</div>
+    {% endif %}
     <hr class="divider" style="margin-top: 20px;"/>
     <div class="signature-section">
         <table style="margin: 0;">

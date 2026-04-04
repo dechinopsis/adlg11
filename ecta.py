@@ -1,7 +1,7 @@
 from jinja2 import Template
 from weasyprint import HTML
 
-from commons.commons import parse_csv, calculate_balance_and_movements
+from commons.commons import parse_csv, calculate_balance_and_movements, calculate_payments
 
 
 def format_currency(amount):
@@ -144,6 +144,53 @@ def generate_pdf_report(previous_balance, current_balance, movements, period):
     HTML(string=html_content).write_pdf(f"monthlyReports/ecta_{pperiod}.pdf")
 
 
+MONTH_ABBR = {
+    '01': 'ene', '02': 'feb', '03': 'mar', '04': 'abr',
+    '05': 'may', '06': 'jun', '07': 'jul', '08': 'ago',
+    '09': 'sep', '10': 'oct', '11': 'nov', '12': 'dic'
+}
+
+
+def print_payment_diff(movements, period):
+    month, year = period.split('/')
+    period_id = MONTH_ABBR[month] + year
+
+    try:
+        result = calculate_payments('meta.json', 'expenses.json', period_id)
+    except ValueError:
+        print(f"\n[!] No se encontró el periodo '{period_id}' en expenses.json — no se puede calcular diferencias.")
+        return
+
+    expected = {p['id']: p['total'] for p in result['payments']}
+
+    paid = {}
+    for mov in movements:
+        ref = mov.get('Reference', '')
+        if ref.startswith('APTO'):
+            apt_id = ref[4:]
+            paid[apt_id] = round(paid.get(apt_id, 0.0) + mov['Credit'], 2)
+
+    print(f"\n{'─'*60}")
+    print(f"  DIFERENCIAS DE PAGO  —  {period_id.upper()}")
+    print(f"{'─'*60}")
+    print(f"  {'APTO':<6}  {'CALCULADO':>10}  {'PAGADO':>10}  {'DIFERENCIA':>10}")
+    print(f"{'─'*60}")
+
+    has_diff = False
+    for apt_id, exp_amount in sorted(expected.items()):
+        paid_amount = paid.get(apt_id, 0.0)
+        diff = round(paid_amount - exp_amount, 2)
+        marker = ' <<<' if diff != 0 else ''
+        if diff != 0:
+            has_diff = True
+        print(f"  {apt_id:<6}  {exp_amount:>10.2f}  {paid_amount:>10.2f}  {diff:>+10.2f}{marker}")
+
+    print(f"{'─'*60}")
+    if not has_diff:
+        print("  Todos los departamentos pagaron el monto exacto.")
+    print()
+
+
 def main(period):
     file_path = 'ADLG_ECTA.csv'
     data = parse_csv(file_path)
@@ -152,8 +199,9 @@ def main(period):
     print(f"Balance until the previous month: {previous_balance:.2f}")
     print(f"Current balance: {current_balance:.2f}")
 
+    print_payment_diff(movements, period)
     generate_pdf_report(previous_balance, current_balance, movements, period)
 
 
 if __name__ == "__main__":
-    main('02/2026')
+    main('03/2026')

@@ -561,24 +561,64 @@
       "security": 1040,
       "others": [
          {
-          "concept": "Pantallas de detección de cabina",
+          "concept": "Pantallas de detección de cabina 12/01",
           "total": 120.00
         },
         {
-          "concept": "Instalación de Pantallas de cabina",
+          "concept": "Instalación de Pantallas de cabina 12/01",
           "total": 200.00
         },
         {
-          "concept": "Mantenimiento de cerradura",
+          "concept": "Mantenimiento de cerradura 5/01",
           "total": 40.00
         },
         {
           "concept": "Articulos de limpieza 16/02",
           "total": 47.74
+        },
+        {
+          "concept": "Artículos de limpieza 19/03",
+          "total": 11.90
         }
       ],
       "fixes": {
-
+        "202": 0.02,
+        "401": -0.17
+      }
+    },
+    {
+      "id": "may2026",
+      "label": "Mayo 2026",
+      "commons": [
+        {
+          "concept": "clnServ",
+          "total": 400
+        },
+        {
+          "concept": "grdServ",
+          "total": 60
+        },
+        {
+          "concept": "elvServ",
+          "total": 295
+        },
+        {
+          "concept": "elcUtils",
+          "total": 290
+        }
+      ],
+      "security": 1040,
+      "others": [
+        {
+          "concept": "Limpieza y desinfección de Tanque elevado 20/03",
+          "total": 380.00
+        },
+        {
+          "concept": "Calibración y cambio de boya 23/03",
+          "total": 160.00
+        }
+      ],
+      "fixes": {
       }
     }
   ]
