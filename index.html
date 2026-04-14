@@ -13,6 +13,22 @@
 </head>
 <body>
 
+  <style>
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.08);opacity:0.75} }
+
+  </style>
+  <div id="splash" style="position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#212529;transition:opacity 0.5s;">
+    <img src="logo.webp" style="height:110px;animation:pulse 1.8s ease-in-out infinite;">
+
+  </div>
+  <script>
+    setTimeout(() => {
+      const s = document.getElementById('splash');
+      s.style.opacity = '0';
+      setTimeout(() => s.remove(), 400);
+    }, 3000);
+  </script>
+
   <nav class="navbar bg-body-tertiary border-bottom px-3">
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu">
       <span class="navbar-toggler-icon"></span>
@@ -35,11 +51,11 @@
   </div>
 
   <main class="container py-4 text-center">
-    <img src="logo.png" alt="Alto de la Gloria 11" class="img-fluid" style="max-height: 300px;" />
+    <img src="logo.webp" alt="Alto de la Gloria 11" class="img-fluid" style="max-height: 300px;" />
   </main>
 
   <footer class="border-top py-3 text-center">
-    <img src="logo.png" alt="Alto de la Gloria 11" style="height:28px;" class="me-2">
+    <img src="logo.webp" alt="Alto de la Gloria 11" style="height:28px;" class="me-2">
     <small class="text-muted">Powered by David Torres - UCSM</small>
   </footer>
 
