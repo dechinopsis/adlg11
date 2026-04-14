@@ -2,7 +2,8 @@
   "periods": [
     {
       "id": "feb2025",
-      "label": "FEBRERO 2025",
+      "ectaPublished": true,
+      "label": "Febrero 2025",
       "commons": [
         {
           "concept": "clnServ",
@@ -35,11 +36,13 @@
           "concept": "Reactivación de cerco eléctrico",
           "total": 50
         }
-      ]
+      ],
+      "expensesReportPublished": true
     },
     {
       "id": "mar2025",
-      "label": "MARZO 2025",
+      "ectaPublished": true,
+      "label": "Marzo 2025",
       "commons": [
         {
           "concept": "clnServ",
@@ -68,11 +71,13 @@
           "concept": "Rejilla de ventilación ascensor",
           "total": 370
         }
-      ]
+      ],
+      "expensesReportPublished": true
     },
     {
       "id": "apr2025",
-      "label": "ABRIL 2025",
+      "ectaPublished": true,
+      "label": "Abril 2025",
       "commons": [
         {
           "concept": "clnServ",
@@ -105,11 +110,13 @@
           "concept": "Cerco eléctrico 1ra cuota",
           "total": 415.85
         }
-      ]
+      ],
+      "expensesReportPublished": true
     },
     {
       "id": "may2025",
-      "label": "MAYO 2025",
+      "ectaPublished": true,
+      "label": "Mayo 2025",
       "commons": [
         {
           "concept": "clnServ",
@@ -134,10 +141,12 @@
           "concept": "Artículos de limpieza",
           "total": 35.23
         }
-      ]
+      ],
+      "expensesReportPublished": true
     },
     {
       "id": "jun2025",
+      "ectaPublished": true,
       "label": "Junio 2025",
       "commons": [
         {
@@ -161,7 +170,7 @@
       "others": [
         {
           "concept": "Platón LED 2do piso",
-          "total": 81.90
+          "total": 81.9
         },
         {
           "concept": "Artículos de Limpieza",
@@ -174,10 +183,12 @@
       ],
       "fixes": {
         "401": -7.13
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "jul2025",
+      "ectaPublished": true,
       "label": "Julio 2025",
       "commons": [
         {
@@ -201,15 +212,17 @@
       "others": [
         {
           "concept": "Artículos de Limpieza",
-          "total": 24.70
+          "total": 24.7
         }
       ],
       "fixes": {
         "401": -0.06
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "aug2025",
+      "ectaPublished": true,
       "label": "Agosto 2025",
       "commons": [
         {
@@ -238,10 +251,12 @@
       ],
       "fixes": {
         "401": -0.12
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "sep2025",
+      "ectaPublished": true,
       "label": "Septiembre 2025",
       "commons": [
         {
@@ -274,10 +289,12 @@
       ],
       "fixes": {
         "401": -0.41
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "oct2025",
+      "ectaPublished": true,
       "label": "Octubre 2025",
       "commons": [
         {
@@ -306,10 +323,12 @@
       ],
       "fixes": {
         "401": -0.51
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "nov2025",
+      "ectaPublished": true,
       "label": "Noviembre 2025",
       "commons": [
         {
@@ -333,7 +352,7 @@
       "others": [
         {
           "concept": "Artículos de limpieza",
-          "total": 41.80
+          "total": 41.8
         },
         {
           "concept": "Rev. Sensor de mov. 4to piso",
@@ -342,11 +361,13 @@
       ],
       "fixes": {
         "401": -0.35
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "dec2025",
-      "label": "December 2025",
+      "ectaPublished": true,
+      "label": "Diciembre 2025",
       "commons": [
         {
           "concept": "clnServ",
@@ -373,9 +394,10 @@
         }
       ],
       "fixes": {
-        "402": 0.10,
+        "402": 0.1,
         "401": -0.36
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "dec2025_ext1",
@@ -409,12 +431,13 @@
           "total": 800
         }
       ],
-      "fixes": {
-      }
+      "fixes": {},
+      "expensesReportPublished": true
     },
     {
       "id": "jan2026",
-      "label": "January 2026",
+      "ectaPublished": true,
+      "label": "Enero 2026",
       "commons": [
         {
           "concept": "clnServ",
@@ -437,23 +460,25 @@
       "others": [
         {
           "concept": "Resanado pintura garage(08/2025)",
-          "total": 151.40
+          "total": 151.4
         },
         {
           "concept": "Mantenimiento extintores(11/2025)",
-          "total": 120.00
+          "total": 120.0
         },
         {
           "concept": "Escalera Plegable(11/2025)",
-          "total": 258.90
+          "total": 258.9
         }
       ],
       "fixes": {
         "401": -0.33
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "feb2026",
+      "ectaPublished": true,
       "label": "Febrero 2026",
       "commons": [
         {
@@ -477,28 +502,30 @@
       "others": [
         {
           "concept": "2do Resanado pintura garage",
-          "total": 120.00
+          "total": 120.0
         },
         {
           "concept": "Visita Emergencia Br Electr. Luis Vargas ",
-          "total": 180.00
+          "total": 180.0
         },
         {
           "concept": "Llaves thermo magnéticas y otros repuestos",
-          "total": 80.00
+          "total": 80.0
         },
         {
           "concept": "Remplazo de llave Br Electr. Luis Vargas",
-          "total": 120.00
+          "total": 120.0
         }
       ],
       "fixes": {
         "401": -0.73
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "mar2026",
-      "label": "March 2026",
+      "ectaPublished": true,
+      "label": "Marzo 2026",
       "commons": [
         {
           "concept": "clnServ",
@@ -521,25 +548,27 @@
       "others": [
         {
           "concept": "Sistema salvamotor ascensor",
-          "total": 348.80
+          "total": 348.8
         },
         {
           "concept": "Instalación de sistema salvamotor",
-          "total": 150.00
+          "total": 150.0
         },
         {
           "concept": "Plásticos protectores de madera",
-          "total": 40.00
+          "total": 40.0
         }
       ],
       "fixes": {
         "401": -0.67,
         "202": -3.83
-      }
+      },
+      "expensesReportPublished": true
     },
     {
       "id": "apr2026",
-      "label": "April 2026",
+      "label": "Abril 2026",
+      "expensesReportPublished": true,
       "commons": [
         {
           "concept": "clnServ",
@@ -560,17 +589,17 @@
       ],
       "security": 1040,
       "others": [
-         {
+        {
           "concept": "Pantallas de detección de cabina 12/01",
-          "total": 120.00
+          "total": 120.0
         },
         {
           "concept": "Instalación de Pantallas de cabina 12/01",
-          "total": 200.00
+          "total": 200.0
         },
         {
           "concept": "Mantenimiento de cerradura 5/01",
-          "total": 40.00
+          "total": 40.0
         },
         {
           "concept": "Articulos de limpieza 16/02",
@@ -578,7 +607,7 @@
         },
         {
           "concept": "Artículos de limpieza 19/03",
-          "total": 11.90
+          "total": 11.9
         }
       ],
       "fixes": {
@@ -611,15 +640,14 @@
       "others": [
         {
           "concept": "Limpieza y desinfección de Tanque elevado 20/03",
-          "total": 380.00
+          "total": 380.0
         },
         {
           "concept": "Calibración y cambio de boya 23/03",
-          "total": 160.00
+          "total": 160.0
         }
       ],
-      "fixes": {
-      }
+      "fixes": {}
     }
   ]
 }
