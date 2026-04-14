@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Constancia de Recepción de Materiales</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #fff;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .container {
+            width: 82%;
+            margin: 16px auto;
+            padding: 12px 16px;
+            border: 1px solid #555;
+            box-sizing: border-box;
+        }
+        .header {
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0;
+        }
+        .header::before { content: "[ "; }
+        .header::after  { content: " ]"; }
+
+        .header2 {
+            text-align: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 2px;
+            margin-bottom: 6px;
+        }
+        .divider {
+            border: none;
+            border-top: 1px dashed #555;
+            margin: 6px 0;
+        }
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .body-text {
+            font-size: 12px;
+            margin: 12px 0 8px 0;
+        }
+        .materials-list {
+            margin: 8px 0 8px 20px;
+            padding: 0;
+            list-style-type: disc;
+        }
+        .materials-list li {
+            padding: 2px 0;
+            font-size: 12px;
+        }
+        .confirmation-text {
+            font-size: 12px;
+            margin-top: 12px;
+        }
+        .signature-section {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .signature-box {
+            text-align: center;
+            width: 45%;
+        }
+        .signature-line {
+            display: block;
+            width: 100%;
+            border-top: 1px solid #000;
+            margin-bottom: 4px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Constancia de Recepción de Materiales</div>
+        <div class="header2">Alto de la Gloria 11</div>
+        <hr class="divider"/>
+        <div class="meta-row">
+            <span>No. {{ receipt_number }}</span>
+            <span>Arequipa, {{ date }}</span>
+        </div>
+        <hr class="divider"/>
+        <div class="body-text">
+            Yo, <strong>{{ receiver_name }}</strong>, recibí de manos del señor <strong>{{ admin_full_name }}</strong> los siguientes materiales:
+        </div>
+        <ul class="materials-list">
+            {% for item in materials %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+        <div class="confirmation-text">
+            Firmo el presente documento en señal de conformidad.
+        </div>
+        <hr class="divider" style="margin-top: 20px;"/>
+        <div class="signature-section">
+            <div class="signature-box">
+                <span class="signature-line"></span>
+                <strong>{{ receiver_name }}</strong>
+            </div>
+            <div class="signature-box">
+                <span class="signature-line"></span>
+                <strong>{{ admin_short_name }}</strong><br>
+                DNI {{ admin_id }}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

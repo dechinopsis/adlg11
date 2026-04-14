@@ -7,7 +7,7 @@
             "responsible": "CESAR PADILLA",
             "moneySource": "EFECTIVO",
             "usualAmount": 200.0,
-            "enum": 30
+            "enum": 31
         },
         "grdServ": {
             "name": "gardening",
@@ -82,5 +82,8 @@
         "shortName": "DAVID R. TORRES P.",
         "name": "DAVID RODOLFO TORRES PALAO",
         "id": "70009504"
+    },
+    "counters": {
+        "matRecv": 2
     }
 }
