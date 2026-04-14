@@ -79,6 +79,24 @@
       }
     }
 
+    const MONTH = { jan:'01', feb:'02', mar:'03', apr:'04', may:'05', jun:'06', jul:'07', aug:'08', sep:'09', oct:'10', nov:'11', dec:'12' };
+
+    function periodToInt(id) {
+      const mm = MONTH[id.slice(0, 3)];
+      const yyyy = id.slice(3, 7);
+      const base = parseInt(yyyy + mm) * 100;
+      if (!id.includes('_')) return base;
+      const extNum = parseInt(id.split('_ext')[1]) || 1;
+      return base + extNum;
+    }
+
+    function resolveName(apt, periodId) {
+      if (!apt.nameHistory) return apt.name;
+      const p = periodToInt(periodId);
+      const entry = apt.nameHistory.find(h => p <= periodToInt(h.until));
+      return entry ? entry.name : apt.name;
+    }
+
     function round2(n) { return Math.round(n * 100) / 100; }
 
     function fmt(n) {
@@ -124,7 +142,7 @@
 
         return {
           id:             apt.id,
-          name:           apt.name,
+          name:           resolveName(apt, periodId),
           percentage:     apt.percentage,
           total_expenses: round2(aptExpenses),
           total_security: round2(securityPerApt),

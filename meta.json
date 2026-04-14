@@ -75,7 +75,10 @@
         {
             "id": "501",
             "name": "Familia Zavalaga Lopez",
-            "percentage": 16.96
+            "percentage": 16.96,
+            "nameHistory": [
+                { "until": "dec2025", "name": "Familia Howard Mella" }
+            ]
         }
     ],
     "admin": {
