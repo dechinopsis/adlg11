@@ -263,26 +263,29 @@
 
           <!-- Distribución -->
           <h6 class="text-uppercase text-muted mb-2">Distribución</h6>
-          <div class="row g-2 mb-4">
+          <div class="accordion mb-4" id="distAccordion">
             ${d.payments.map(p => `
-              <div class="col-12 col-md-6">
-                <div class="card">
-                  <div class="px-3 py-2 d-flex flex-row justify-content-between align-items-center"
-                       role="button" data-bs-toggle="collapse" data-bs-target="#apt-${p.id}">
+              <div class="accordion-item">
+                <h2 class="accordion-header d-flex align-items-center">
+                  <button class="accordion-button collapsed flex-grow-1 py-2" type="button"
+                          data-bs-toggle="collapse" data-bs-target="#apt-${p.id}">
                     <div>
                       <div class="fw-bold">Dpto ${p.id}</div>
                       <small class="text-muted">${p.name}</small>
                     </div>
-                    <button class="btn btn-sm btn-outline-secondary fw-bold" onclick="event.stopPropagation(); copyText(this, '${p.total.toFixed(2)}')">${fmt(p.total)}</button>
+                  </button>
+                  <div class="px-3 flex-shrink-0">
+                    <button class="btn btn-sm btn-outline-secondary fw-bold"
+                            onclick="copyText(this, '${p.total.toFixed(2)}')">${fmt(p.total)}</button>
                   </div>
-                  <div class="collapse" id="apt-${p.id}">
-                    <div class="border-top px-3 py-2 small">
-                      <div class="d-flex justify-content-between text-muted"><span>Porcentaje</span><span>${p.percentage}%</span></div>
-                      <div class="d-flex justify-content-between text-muted"><span>Gastos</span><span>${fmt(p.total_expenses)}</span></div>
-                      <div class="d-flex justify-content-between text-muted"><span>Vigilancia</span><span>${fmt(p.total_security)}</span></div>
-                      <div class="d-flex justify-content-between text-muted"><span>Ajuste</span><span>${p.adjustment !== 0 ? fmt(p.adjustment) : '—'}</span></div>
-                      <div class="d-flex justify-content-between fw-bold border-top mt-1 pt-1"><span>Total</span><span>${fmt(p.total)}</span></div>
-                    </div>
+                </h2>
+                <div class="accordion-collapse collapse" id="apt-${p.id}">
+                  <div class="accordion-body small py-2">
+                    <div class="d-flex justify-content-between text-muted"><span>Porcentaje</span><span>${p.percentage}%</span></div>
+                    <div class="d-flex justify-content-between text-muted"><span>Gastos</span><span>${fmt(p.total_expenses)}</span></div>
+                    <div class="d-flex justify-content-between text-muted"><span>Vigilancia</span><span>${fmt(p.total_security)}</span></div>
+                    <div class="d-flex justify-content-between text-muted"><span>Ajuste</span><span>${p.adjustment !== 0 ? fmt(p.adjustment) : '—'}</span></div>
+                    <div class="d-flex justify-content-between fw-bold border-top mt-1 pt-1"><span>Total</span><span>${fmt(p.total)}</span></div>
                   </div>
                 </div>
               </div>`).join('')}
