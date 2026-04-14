@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estado de cuenta — Alto de la Gloria 11</title>
+  <link rel="icon" href="logo.png" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+    main { flex: 1; }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar bg-body-tertiary border-bottom px-3">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <span class="navbar-brand mb-0 h1">Alto de la Gloria 11</span>
+  </nav>
+
+  <div class="offcanvas offcanvas-start" id="sidebar">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title">Menú</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <ul class="nav flex-column">
+        <li class="nav-item"><a class="nav-link px-3 py-3" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link px-3 py-3 active" href="account-statements.html">Estados de cuenta</a></li>
+        <li class="nav-item"><a class="nav-link px-3 py-3" href="expenses-report.html">Gastos administrativos</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Evidence modal -->
+  <div class="modal fade" id="evidenceModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="evidenceModalTitle">Evidencias</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="evidenceModalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container py-4">
+    <div id="content">
+      <div class="text-center text-muted py-5">
+        <div class="spinner-border spinner-border-sm me-2"></div>Cargando...
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-top py-3 text-center">
+    <img src="logo.png" alt="Alto de la Gloria 11" style="height:28px;" class="me-2">
+    <small class="text-muted">Powered by David Torres - UCSM</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const MONTH = { jan:'01', feb:'02', mar:'03', apr:'04', may:'05', jun:'06', jul:'07', aug:'08', sep:'09', oct:'10', nov:'11', dec:'12' };
+
+    function ectaBase(id) {
+      if (/_/.test(id)) return null;
+      const mm = MONTH[id.slice(0, 3)];
+      const yyyy = id.slice(3, 7);
+      if (!mm || !yyyy) return null;
+      return `ecta_${mm}_${yyyy}`;
+    }
+
+    function parseCsv(text) {
+      const lines = text.trim().split('\n');
+      const headers = lines[0].replace(/^\uFEFF/, '').split(',').map(h => h.trim());
+      return lines.slice(1).map(line => {
+        const values = line.split(',');
+        const row = {};
+        headers.forEach((h, i) => row[h] = (values[i] || '').trim());
+        return row;
+      });
+    }
+
+    function parseDate(str) {
+      const [d, m, y] = str.split('/');
+      return new Date(2000 + parseInt(y), parseInt(m) - 1, parseInt(d));
+    }
+
+    function round2(n) { return Math.round(n * 100) / 100; }
+
+    function fmt(n) {
+      return n !== 0 ? n.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '';
+    }
+
+    // "jan2026003" → "003"
+    function trimOrdinal(ordinal) {
+      return ordinal.slice(7);
+    }
+
+    function calculateBalanceAndMovements(rows, periodId) {
+      const mm = MONTH[periodId.slice(0, 3)];
+      const yyyy = periodId.slice(3, 7);
+      const period = parseInt(yyyy + mm);
+
+      let previousBalance = 0;
+      let currentBalance = 0;
+      const movements = [];
+
+      for (const row of rows) {
+        const date = parseDate(row['Date']);
+        const monthYear = date.getFullYear() * 100 + (date.getMonth() + 1);
+        const credit = parseFloat(row['Credit'] || 0);
+        const debit  = parseFloat(row['Debit']  || 0);
+
+        if (monthYear < period)  previousBalance = round2(previousBalance + credit - debit);
+        if (monthYear <= period) currentBalance  = round2(currentBalance  + credit - debit);
+
+        if (monthYear === period && (debit !== 0 || credit !== 0)) {
+          const dd = String(date.getDate()).padStart(2, '0');
+          const mo = String(date.getMonth() + 1).padStart(2, '0');
+          movements.push({
+            ordinal: row['Ordinal'],
+            concept: row['Concept'],
+            date:    `${dd}/${mo}`,
+            debit,
+            credit,
+          });
+        }
+      }
+
+      return { previousBalance, currentBalance, movements };
+    }
+
+    function openEvidence(concept, files) {
+      document.getElementById('evidenceModalTitle').textContent = concept;
+      document.getElementById('evidenceModalBody').innerHTML = files.map((f, i) =>
+        `<a href="${f}" target="_blank" class="btn btn-outline-secondary w-100 mb-2">Evidencia ${i + 1}</a>`
+      ).join('');
+      new bootstrap.Modal(document.getElementById('evidenceModal')).show();
+    }
+
+    // --- Main ---
+    const params   = new URLSearchParams(location.search);
+    const periodId = params.get('id');
+
+    if (!periodId) {
+      document.getElementById('content').innerHTML = '<p class="text-danger">Falta el parámetro ?id=</p>';
+    } else {
+      Promise.all([
+        fetch('ADLG_ECTA.csv').then(r => r.text()),
+        fetch('expenses.json').then(r => r.json()),
+        fetch('evidence-manifest.json').then(r => r.json()),
+      ]).then(([csvText, expenses, manifest]) => {
+        const rows      = parseCsv(csvText);
+        const period    = expenses.periods.find(p => p.id === periodId);
+        const label     = period ? period.label : periodId;
+        const evidence  = manifest[periodId] || {};
+        const { previousBalance, currentBalance, movements } = calculateBalanceAndMovements(rows, periodId);
+
+        const totalDebit  = round2(movements.reduce((s, m) => s + m.debit,  0));
+        const totalCredit = round2(movements.reduce((s, m) => s + m.credit, 0));
+
+
+        const movementRows = movements.map(m => {
+          const files = evidence[m.ordinal] || [];
+          const conceptCell = files.length === 1
+            ? `<a href="${files[0]}" target="_blank" class="text-decoration-none">${m.concept}</a>`
+            : files.length > 1
+              ? `<a href="#" class="text-decoration-none" onclick='openEvidence(${JSON.stringify(m.concept)}, ${JSON.stringify(files)}); return false;'>${m.concept}</a>`
+              : m.concept;
+
+          return `
+            <tr>
+              <td class="text-muted small">${trimOrdinal(m.ordinal)}</td>
+              <td>${conceptCell}</td>
+              <td>${m.date}</td>
+              <td class="text-end">${fmt(m.debit)}</td>
+              <td class="text-end">${fmt(m.credit)}</td>
+            </tr>`;
+        }).join('');
+
+        const base = ectaBase(periodId);
+        const downloadLinks = base ? `
+          <div class="d-flex gap-2 mb-4">
+            <a href="monthlyReports/${base}.pdf" target="_blank" class="btn btn-outline-secondary">Reporte</a>
+            <a href="monthlyReports/ecta_w_evidence_${base.slice(5)}.pdf" target="_blank" class="btn btn-outline-secondary">Reporte con evidencia</a>
+          </div>` : '';
+
+        document.getElementById('content').innerHTML = `
+          <div class="d-flex align-items-center gap-3 mb-4">
+            <a href="account-statements.html" class="btn btn-sm btn-outline-secondary">← Volver</a>
+            <h4 class="mb-0">Estado de cuenta — ${label}</h4>
+          </div>
+          ${downloadLinks}
+          <div class="row g-3 mb-4">
+            ${previousBalance !== 0 ? `
+            <div class="col-4">
+              <div class="card text-center">
+                <div class="card-body py-2">
+                  <div class="text-muted small">Saldo ant.</div>
+                  <div class="fw-bold">${fmt(previousBalance)}</div>
+                </div>
+              </div>
+            </div>` : ''}
+            <div class="col-4">
+              <div class="card text-center">
+                <div class="card-body py-2">
+                  <div class="text-muted small">Neto</div>
+                  <div class="fw-bold">${fmt(round2(totalCredit - totalDebit))}</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="card text-center">
+                <div class="card-body py-2">
+                  <div class="text-muted small">Saldo final</div>
+                  <div class="fw-bold">${fmt(currentBalance)}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-bordered table-sm align-middle">
+              <thead class="table-secondary">
+                <tr>
+                  <th>#</th>
+                  <th>Concepto</th>
+                  <th>Fecha</th>
+                  <th class="text-end">Debe</th>
+                  <th class="text-end">Haber</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${movementRows}
+              </tbody>
+              <tfoot class="table-secondary">
+                <tr>
+                  <td colspan="2"><strong>Total movimientos</strong></td>
+                  <td></td>
+                  <td class="text-end"><strong>${fmt(totalDebit)}</strong></td>
+                  <td class="text-end"><strong>${fmt(totalCredit)}</strong></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><strong>Saldo final</strong></td>
+                  <td></td>
+                  <td></td>
+                  <td class="text-end"><strong>${fmt(currentBalance)}</strong></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>`;
+      });
+    }
+  </script>
+
+</body>
+</html>
