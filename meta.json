@@ -15,7 +15,7 @@
             "shortLabel": "Jardiner\u00eda",
             "responsible": "LEONARDO MENDOZA",
             "moneySource": "YAPE",
-            "enum": 15
+            "enum": 16
         },
         "elvServ": {
             "name": "elevator",
@@ -77,7 +77,10 @@
             "name": "Familia Zavalaga Lopez",
             "percentage": 16.96,
             "nameHistory": [
-                { "until": "dec2025", "name": "Familia Howard Mella" }
+                {
+                    "until": "dec2025",
+                    "name": "Familia Howard Mella"
+                }
             ]
         }
     ],
