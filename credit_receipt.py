@@ -10,7 +10,7 @@ from commons.commons import calculate_payments, amount_to_words, encrypt_text, g
     calculate_balance_and_movements
 
 META_FILE = "meta.json"
-HTML_TEMPLATE = "creditReceiptTemplate.html"
+HTML_TEMPLATE = "templates/creditReceiptTemplate.html"
 
 load_dotenv()
 KEY = os.getenv("KEY")

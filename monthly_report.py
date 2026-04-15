@@ -7,7 +7,7 @@ from weasyprint import HTML
 
 from commons.commons import calculate_payments, encrypt_text, generate_qr_base64
 
-HTML_TEMPLATE = "monthly_report.html"
+HTML_TEMPLATE = "templates/monthly_report.html"
 load_dotenv()
 KEY = os.getenv("KEY")
 

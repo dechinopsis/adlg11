@@ -26,7 +26,7 @@
       const s = document.getElementById('splash');
       s.style.opacity = '0';
       setTimeout(() => s.remove(), 400);
-    }, 2000);
+    }, 1500);
   </script>
 
   <nav class="navbar bg-body-tertiary border-bottom px-3">
@@ -182,19 +182,22 @@
         const movementRows = movements.map(m => {
           const files = evidence[m.ordinal] || [];
           const conceptCell = files.length === 1
-            ? `<a href="${files[0]}" target="_blank" class="text-decoration-none">${m.concept}</a>`
+            ? `<a href="${files[0]}" target="_blank" class="text-decoration-none fw-semibold">${m.concept}</a>`
             : files.length > 1
-              ? `<a href="#" class="text-decoration-none" onclick='openEvidence(${JSON.stringify(m.concept)}, ${JSON.stringify(files)}); return false;'>${m.concept}</a>`
-              : m.concept;
+              ? `<a href="#" class="text-decoration-none fw-semibold" onclick='openEvidence(${JSON.stringify(m.concept)}, ${JSON.stringify(files)}); return false;'>${m.concept}</a>`
+              : `<span class="fw-semibold">${m.concept}</span>`;
 
           return `
-            <tr>
-              <td class="text-muted small">${trimOrdinal(m.ordinal)}</td>
-              <td>${conceptCell}</td>
-              <td>${m.date}</td>
-              <td class="text-end">${fmt(m.debit)}</td>
-              <td class="text-end">${fmt(m.credit)}</td>
-            </tr>`;
+            <li class="list-group-item d-flex justify-content-between align-items-center gap-2">
+              <div>
+                ${conceptCell}
+                <div class="text-muted small">${trimOrdinal(m.ordinal)} · ${m.date}</div>
+              </div>
+              <div class="text-end text-nowrap">
+                ${m.debit  ? `<div class="text-danger">−${fmt(m.debit)}</div>`  : ''}
+                ${m.credit ? `<div class="text-success">+${fmt(m.credit)}</div>` : ''}
+              </div>
+            </li>`;
         }).join('');
 
         const base = ectaBase(periodId);
@@ -223,8 +226,8 @@
             <div class="col-4">
               <div class="card text-center">
                 <div class="card-body py-2">
-                  <div class="text-muted small">Neto</div>
-                  <div class="fw-bold">${fmt(round2(totalCredit - totalDebit))}</div>
+                  <div class="text-muted small">Resultado</div>
+                  <div class="fw-bold ${round2(totalCredit - totalDebit) >= 0 ? 'text-success' : 'text-danger'}">${fmt(round2(totalCredit - totalDebit))}</div>
                 </div>
               </div>
             </div>
@@ -237,36 +240,16 @@
               </div>
             </div>
           </div>
-          <div class="table-responsive">
-            <table class="table table-bordered table-sm align-middle">
-              <thead class="table-secondary">
-                <tr>
-                  <th>#</th>
-                  <th>Concepto</th>
-                  <th>Fecha</th>
-                  <th class="text-end">Debe</th>
-                  <th class="text-end">Haber</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${movementRows}
-              </tbody>
-              <tfoot class="table-secondary">
-                <tr>
-                  <td colspan="2"><strong>Total movimientos</strong></td>
-                  <td></td>
-                  <td class="text-end"><strong>${fmt(totalDebit)}</strong></td>
-                  <td class="text-end"><strong>${fmt(totalCredit)}</strong></td>
-                </tr>
-                <tr>
-                  <td colspan="2"><strong>Saldo final</strong></td>
-                  <td></td>
-                  <td></td>
-                  <td class="text-end"><strong>${fmt(currentBalance)}</strong></td>
-                </tr>
-              </tfoot>
-            </table>
-          </div>`;
+          <ul class="list-group list-group-flush border rounded">
+            ${movementRows}
+            <li class="list-group-item d-flex justify-content-between align-items-center bg-body-secondary">
+              <small class="text-muted">Total movimientos</small>
+              <div class="text-end text-nowrap">
+                ${totalDebit  ? `<div class="text-danger small">−${fmt(totalDebit)}</div>`  : ''}
+                ${totalCredit ? `<div class="text-success small">+${fmt(totalCredit)}</div>` : ''}
+              </div>
+            </li>
+          </ul>`;
       });
     }
   </script>

@@ -10,7 +10,7 @@ from weasyprint import HTML
 from commons.commons import amount_to_words
 
 META_FILE = "meta.json"
-HTML_TEMPLATE = "receiptTemplate.html"
+HTML_TEMPLATE = "templates/receiptTemplate.html"
 
 
 def load_metadata():

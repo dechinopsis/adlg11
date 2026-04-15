@@ -7,7 +7,7 @@ from pdf2image import convert_from_path
 from weasyprint import HTML
 
 META_FILE = "meta.json"
-HTML_TEMPLATE = "materialReceiptTemplate.html"
+HTML_TEMPLATE = "templates/materialReceiptTemplate.html"
 OUTPUT_FOLDER = "matRecv"
 
 
